@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RuleSet Name="MyWorkSearch3 and Orchard Basic Correctness Rules" Description="These rules focus on logic errors and common mistakes made in the usage of framework APIs, formatting issues to minimize conflicts during merge. Include this rule set to expand on the list of warnings reported by the minimum recommended rules." ToolsVersion="14.0">
+  <Rules AnalyzerId="Microsoft.Analyzers.ManagedCodeAnalysis" RuleNamespace="Microsoft.Rules.Managed">
+    <Rule Id="CA1013" Action="Warning" />
+    <Rule Id="CA1806" Action="Warning" />
+    <Rule Id="CA1816" Action="Warning" />
+    <Rule Id="CA1820" Action="Warning" />
+    <Rule Id="CA1903" Action="Warning" />
+    <Rule Id="CA2004" Action="Warning" />
+    <Rule Id="CA2006" Action="Warning" />
+    <Rule Id="CA2102" Action="Warning" />
+    <Rule Id="CA2105" Action="Warning" />
+    <Rule Id="CA2106" Action="Warning" />
+    <Rule Id="CA2115" Action="Warning" />
+    <Rule Id="CA2119" Action="Warning" />
+    <Rule Id="CA2120" Action="Warning" />
+    <Rule Id="CA2121" Action="Warning" />
+    <Rule Id="CA2130" Action="Warning" />
+    <Rule Id="CA2205" Action="Warning" />
+    <Rule Id="CA2215" Action="Warning" />
+    <Rule Id="CA2221" Action="Warning" />
+    <Rule Id="CA2222" Action="Warning" />
+    <Rule Id="CA2223" Action="Warning" />
+    <Rule Id="CA2224" Action="Warning" />
+    <Rule Id="CA2226" Action="Warning" />
+    <Rule Id="CA2231" Action="Warning" />
+    <Rule Id="CA2239" Action="Warning" />
+  </Rules>
+  <Rules AnalyzerId="Microsoft.CodeAnalysis.CSharp" RuleNamespace="Microsoft.CodeAnalysis.CSharp">
+    <Rule Id="CS1717" Action="Error" />
+  </Rules>
+  <Rules AnalyzerId="Microsoft.CodeAnalysis.CSharp.Features" RuleNamespace="Microsoft.CodeAnalysis.CSharp.Features">
+    <Rule Id="IDE0003" Action="None" />
+  </Rules>
+  <Rules AnalyzerId="StyleCop.Analyzers" RuleNamespace="StyleCop.Analyzers">
+    <Rule Id="SA1101" Action="None" />
+    <Rule Id="SA1309" Action="None" />
+    <Rule Id="SA1500" Action="None" />
+    <Rule Id="SA1501" Action="None" />
+    <Rule Id="SA1502" Action="None" />
+    <Rule Id="SA1600" Action="Info" />
+    <Rule Id="SA1601" Action="Info" />
+    <Rule Id="SA1602" Action="Info" />
+    <Rule Id="SA1603" Action="Info" />
+    <Rule Id="SA1604" Action="Info" />
+    <Rule Id="SA1605" Action="Info" />
+    <Rule Id="SA1606" Action="Info" />
+    <Rule Id="SA1607" Action="Info" />
+    <Rule Id="SA1608" Action="Info" />
+    <Rule Id="SA1610" Action="Info" />
+    <Rule Id="SA1611" Action="Info" />
+    <Rule Id="SA1612" Action="Info" />
+    <Rule Id="SA1613" Action="Info" />
+    <Rule Id="SA1614" Action="Info" />
+    <Rule Id="SA1615" Action="Info" />
+    <Rule Id="SA1616" Action="Info" />
+    <Rule Id="SA1617" Action="Info" />
+    <Rule Id="SA1618" Action="Info" />
+    <Rule Id="SA1619" Action="Info" />
+    <Rule Id="SA1620" Action="Info" />
+    <Rule Id="SA1621" Action="Info" />
+    <Rule Id="SA1622" Action="Info" />
+    <Rule Id="SA1623" Action="Info" />
+    <Rule Id="SA1624" Action="Info" />
+    <Rule Id="SA1625" Action="Info" />
+    <Rule Id="SA1626" Action="Info" />
+    <Rule Id="SA1627" Action="Info" />
+    <Rule Id="SA1630" Action="Info" />
+    <Rule Id="SA1631" Action="Info" />
+    <Rule Id="SA1633" Action="Info" />
+    <Rule Id="SA1634" Action="Info" />
+    <Rule Id="SA1635" Action="Info" />
+    <Rule Id="SA1636" Action="Info" />
+    <Rule Id="SA1637" Action="Info" />
+    <Rule Id="SA1638" Action="Info" />
+    <Rule Id="SA1640" Action="Info" />
+    <Rule Id="SA1641" Action="Info" />
+    <Rule Id="SA1642" Action="Info" />
+    <Rule Id="SA1643" Action="Info" />
+    <Rule Id="SA1644" Action="Info" />
+    <Rule Id="SA1646" Action="Info" />
+    <Rule Id="SA1647" Action="Info" />
+    <Rule Id="SA1648" Action="Info" />
+    <Rule Id="SA1649" Action="Info" />
+    <Rule Id="SA1650" Action="Info" />
+    <Rule Id="SA1651" Action="Info" />
+    <Rule Id="SA1652" Action="Info" />
+    <Rule Id="SX1101" Action="Warning" />
+    <Rule Id="SX1309" Action="Warning" />
+    <Rule Id="SX1309S" Action="Warning" />
+  </Rules>
+</RuleSet>

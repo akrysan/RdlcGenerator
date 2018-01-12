@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+    <metadata>
+        <id>WaveAccess.RdlcGenerator</id>
+        <version>1.0.0</version>
+        <authors>WaveAccess</authors>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>WaveAccess.RdlcGenerator</description>
+        <language>en-US</language>
+        <dependencies>
+            <dependency id="Microsoft.Report.Viewer" version="11.0.0.0" />
+            <dependency id="Microsoft.SqlServer.Types" version="11.0.2" />
+        </dependencies>
+        <references>
+            <reference file="WaveAccess.RdlcGenerator.dll" />
+        </references>
+    </metadata>
+    <files>
+        <file src="WaveAccess.RdlcGenerator\bin\Debug\WaveAccess.RdlcGenerator.dll" target="lib\WaveAccess.RdlcGenerator.dll" />
+    </files>
+</package>

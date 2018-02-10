@@ -16,6 +16,6 @@
         </references>
     </metadata>
     <files>
-        <file src="WaveAccess.RdlcGenerator\bin\Debug\WaveAccess.RdlcGenerator.dll" target="lib\WaveAccess.RdlcGenerator.dll" />
+        <file src="WaveAccess.RdlcGenerator\bin\Release\WaveAccess.RdlcGenerator.dll" target="lib\WaveAccess.RdlcGenerator.dll" />
     </files>
 </package>

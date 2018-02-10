@@ -13,19 +13,19 @@
         private Dictionary<string, Stream> _subReports;
         private Assembly _assembly;
 
-        public Document Generate(Assembly assembly, string reportName, NameValueCollection parameters, string format) {
+        public Document Generate(Assembly assembly, string reportPath, NameValueCollection parameters, string format) {
             _assembly = assembly;
-            LoadReport(reportName);
+            LoadReport(reportPath);
             FillData(parameters);
             return Generate(format, false);
         }
 
-        public Document Generate(Assembly assembly, string reportName, IDictionary<string, string> parameters, string format) {
+        public Document Generate(Assembly assembly, string reportPath, IDictionary<string, string> parameters, string format) {
             var collection = new NameValueCollection();
             foreach (var kvp in parameters) {
                 collection.Add(kvp.Key, kvp.Value);
             }
-            return Generate(assembly, reportName, collection, format);
+            return Generate(assembly, reportPath, collection, format);
         }
 
         private Document Generate(string format, bool calculatePageCount) {
@@ -38,7 +38,7 @@
             return new Document(content, mimeType, encoding, extension, streamids);
         }
 
-        private void FillSubReports(Stream stream) {
+        private void FillSubReports(Stream stream, string reportNamespace) {
             XNamespace rd = "http://schemas.microsoft.com/SQLServer/reporting/reportdesigner";
             stream.Position = 0;
             var rpt = XDocument.Load(stream);
@@ -46,12 +46,12 @@
             var subList = (from c in rpt.Descendants(rn + "ReportName") select c).Select(x => x.Value).ToList();
             _subReports = new Dictionary<string, Stream>();
             foreach (var item in subList.Distinct()) {
-                _subReports.Add(item, _assembly.GetManifestResourceStream("MWS.Course.Service.Reports.Rdlc." + item + ".rdlc"));
+                _subReports.Add(item, _assembly.GetManifestResourceStream($"{reportNamespace}.{item}.rdlc"));
             }
         }
 
-        private void LoadReport(string reportName) {
-            Stream stream = _assembly.GetManifestResourceStream("MWS.Course.Service.Reports.Rdlc." + reportName + ".rdlc");
+        private void LoadReport(string reportPath) {
+            Stream stream = _assembly.GetManifestResourceStream(reportPath + ".rdlc");
             using (MemoryStream memoryStream = new MemoryStream()) {
                 stream.CopyTo(memoryStream);
                 _localReport = new LocalReport();
@@ -59,7 +59,8 @@
                 _localReport.LoadReportDefinition(memoryStream);
                 _dataSetSources = new Dictionary<string, MethodInfo>();
 
-                FillSubReports(stream);
+                var reportNamespace = reportPath.Substring(0, reportPath.LastIndexOf('.'));
+                FillSubReports(stream, reportNamespace);
 
                 if (_subReports != null) {
                     foreach (var subReport in _subReports) {

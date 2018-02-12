@@ -7,35 +7,42 @@
     using System.Reflection;
     using System.Xml.Linq;
     using Microsoft.Reporting.WebForms;
+    using iTextSharp.text.pdf;
+
     public class RdlcGenerator {
         private LocalReport _localReport;
         private Dictionary<string, MethodInfo> _dataSetSources;
         private Dictionary<string, Stream> _subReports;
         private Assembly _assembly;
 
-        public Document Generate(Assembly assembly, string reportPath, NameValueCollection parameters, string format) {
+        public Document Generate(Assembly assembly, string reportPath, NameValueCollection parameters, string format, bool calculatePageCount = false) {
             _assembly = assembly;
             LoadReport(reportPath);
             FillData(parameters);
-            return Generate(format, false);
+            return Generate(format, calculatePageCount);
         }
 
-        public Document Generate(Assembly assembly, string reportPath, IDictionary<string, string> parameters, string format) {
+        public Document Generate(Assembly assembly, string reportPath, IDictionary<string, string> parameters, string format, bool calculatePageCount = false) {
             var collection = new NameValueCollection();
             foreach (var kvp in parameters) {
                 collection.Add(kvp.Key, kvp.Value);
             }
-            return Generate(assembly, reportPath, collection, format);
+            return Generate(assembly, reportPath, collection, format, calculatePageCount);
         }
 
         private Document Generate(string format, bool calculatePageCount) {
             string mimeType, encoding, extension;
             Warning[] warn;
             string[] streamids;
+            int pageCount = 0;
             _localReport.SubreportProcessing += new SubreportProcessingEventHandler(localReport_SubreportProcessing);
             byte[] content = _localReport.Render(format, null, out mimeType, out encoding, out extension, out streamids, out warn);
+            if (calculatePageCount && format == "pdf") {
+                PdfReader pdfReader = new PdfReader(content);
+                pageCount = pdfReader.NumberOfPages;
+            }
 
-            return new Document(content, mimeType, encoding, extension, streamids);
+            return new Document(content, mimeType, encoding, extension, streamids, pageCount);
         }
 
         private void FillSubReports(Stream stream, string reportNamespace) {

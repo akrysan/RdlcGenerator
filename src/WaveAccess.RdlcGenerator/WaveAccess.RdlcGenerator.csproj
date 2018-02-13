@@ -31,6 +31,7 @@
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>bin\Release\WaveAccess.RdlcGenerator.XML</DocumentationFile>
     <CodeAnalysisRuleSet>..\MyWorkSearch3.ruleset</CodeAnalysisRuleSet>
+    <NoWarn>1591</NoWarn>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="itextsharp, Version=5.5.8.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
@@ -63,8 +64,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Document.cs" />
+    <Compile Include="IResolver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RdlcGenerator.cs" />
+    <Compile Include="Resolver.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

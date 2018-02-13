@@ -14,6 +14,17 @@
         private Dictionary<string, MethodInfo> _dataSetSources;
         private Dictionary<string, Stream> _subReports;
         private Assembly _assembly;
+        private readonly IResolver _resolver;
+
+        public RdlcGenerator():this(new Resolver()) {
+            
+        }
+
+        public RdlcGenerator(IResolver resolver) {
+            _resolver = resolver;
+        }
+
+        
 
         public Document Generate(Assembly assembly, string reportPath, NameValueCollection parameters, string format, bool calculatePageCount = false) {
             _assembly = assembly;
@@ -132,7 +143,7 @@
                 }
                 paramsValue[i] = value;
             }
-            var ds = mi.Invoke(Activator.CreateInstance(mi.DeclaringType), paramsValue);
+            var ds = mi.Invoke(_resolver.Resolve(mi.DeclaringType), paramsValue);
             return new ReportDataSource(dsName, ds);
         }
 

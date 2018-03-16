@@ -9,22 +9,18 @@
     using Microsoft.Reporting.WebForms;
     using iTextSharp.text.pdf;
 
-    public class RdlcGenerator {
+    public class RdlcGenerator : IDisposable {
         private LocalReport _localReport;
         private Dictionary<string, MethodInfo> _dataSetSources;
         private Dictionary<string, Stream> _subReports;
         private Assembly _assembly;
         private readonly IResolver _resolver;
 
-        public RdlcGenerator():this(new Resolver()) {
-            
-        }
+        public RdlcGenerator() : this(new Resolver()) { }
 
         public RdlcGenerator(IResolver resolver) {
             _resolver = resolver;
         }
-
-        
 
         public Document Generate(Assembly assembly, string reportPath, NameValueCollection parameters, string format, bool calculatePageCount = false) {
             _assembly = assembly;
@@ -161,6 +157,15 @@
                 }
             }
             _localReport.SetParameters(prms);
+        }
+
+        public void Dispose() {
+            _localReport?.Dispose();
+            if (_subReports?.Count > 0) {
+                foreach (var sr in _subReports) {
+                    sr.Value?.Dispose();
+                }
+            }
         }
     }
 }

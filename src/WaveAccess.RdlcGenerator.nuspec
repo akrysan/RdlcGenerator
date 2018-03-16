@@ -2,13 +2,13 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
     <metadata>
         <id>WaveAccess.RdlcGenerator</id>
-        <version>2.0.0</version>
+        <version>2.1.0</version>
         <authors>WaveAccess</authors>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>WaveAccess.RdlcGenerator</description>
         <language>en-US</language>
         <dependencies>
-			<dependency id="iTextSharp" version="5.5.8" />
+            <dependency id="iTextSharp" version="5.5.8" />
             <dependency id="Microsoft.ReportingServices.ReportViewerControl.WebForms" version="140.1000.523" />
             <dependency id="Microsoft.SqlServer.Types" version="14.0.314.76" />
         </dependencies>
